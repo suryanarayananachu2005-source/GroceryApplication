@@ -1,0 +1,64 @@
+package utilities;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class pageUtility {
+	public void selectDropdownWithValue(WebElement element, String value) {
+	    Select object = new Select(element);
+	    object.selectByValue(value);
+	}
+	public void selectDropdownWithIndex(WebElement element, int value) {
+	    Select object = new Select(element);
+	    object.selectByIndex(value);;
+	}
+	public void selectDropdownWithVisibleText(WebElement element, String value) {
+	    Select object = new Select(element);
+	    object.selectByVisibleText(value);;
+	}
+	public void scrollPage(WebDriver driver)
+	{
+	    JavascriptExecutor js = (JavascriptExecutor)driver;
+
+	    js.executeScript("window.scrollBy(0,150)", "");
+	}
+
+	public void click(WebDriver driver, WebElement element)
+	{
+	    JavascriptExecutor js = (JavascriptExecutor)driver;
+	    js.executeScript("arguments[0].click();", element);
+	}
+
+	public void dragAndDrop(WebDriver driver, WebElement source, WebElement target)
+	{
+	    Actions action = new Actions(driver);
+	    action.dragAndDrop(source, target).perform();
+	}
+
+	public void rightClick(WebDriver driver, WebElement element)
+	{
+	    Actions action = new Actions(driver);
+	    action.contextClick(element).perform();
+	}
+
+	public void mouseOver(WebDriver driver, WebElement element)
+	{
+	    Actions action = new Actions(driver);
+	    action.moveToElement(element).perform();
+	}
+
+	public void clickUsingActions(WebDriver driver, WebElement element)
+	{
+	    Actions action = new Actions(driver);
+	    action.click(element).perform();
+	}
+
+	public void doubleClick(WebDriver driver, WebElement element)
+	{
+	    Actions action = new Actions(driver);
+	    action.doubleClick(element).perform();
+	}
+}
